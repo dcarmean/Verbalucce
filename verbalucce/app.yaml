@@ -1,0 +1,55 @@
+application: verbalucce
+version: 2
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+inbound_services:
+- warmup
+
+handlers:
+- url: /manifests
+  static_dir: manifests
+  expiration: 1d
+
+- url: /gadgets
+  static_dir: gadgets
+  expiration: 1d
+
+- url: /css
+  static_dir: css
+
+- url: /extractors
+  static_dir: extractors
+
+- url: /processing\.js
+  static_files: processing.js
+  upload: processing\.js
+  
+- url: /Verbalucce_Prototype_1\.pde
+  static_files: Verbalucce_Prototype_1.pde
+  upload: Verbalucce_Prototype_1\.pde
+
+- url: /privacy-notice\.html
+  static_files: privacy-notice.html
+  upload: privacy-notice\.html
+
+- url: /icon\.png
+  static_files: icon.png
+  upload: icon\.png
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.1"
+  
+- name: ssl
+  version: latest
+
+- name: numpy
+  version: latest
+
+- name: MySQLdb
+  version: "latest"

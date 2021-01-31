@@ -1,0 +1,206 @@
+<!--
+ Copyright (c) 2013, Intel Corporation
+  
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+	http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License
+  
+ File: interface2.html
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Verbalucce</title>
+<style>
+	html{
+		width:100%;
+		height:100%;
+	}
+	body{
+		background-color:#fff;
+		color:#000;
+		font-family:Arial, Helvetica, sans-serif;
+		width:100%;
+		height:100%;
+		padding:0px;
+		margin:0px;
+	}
+	svg{
+		position:absolute;
+		top:50%;
+		left:0px;
+		//z-index:1;
+	}
+	#sentence{
+		position:absolute;
+		left:0px;
+		top:0px;
+		right:0px;
+		//z-index:2;
+	}
+	.editable{ 
+		background-color:#404040;
+		
+		color:#fff;
+		display:inline-block;
+		padding:5px 35px 5px 10px;
+		min-width:200px;
+		max-width:400px;
+		margin-top: 8px;
+
+		cursor:cell;
+		box-shadow: 5px 5px 15px #888888;
+	}
+	.option{ 
+		background-color:#EF4036;
+		display:inline-block;
+		color:#fff;
+		padding-left:8px;
+		padding-right:8px;
+		//margin:5px 0px 0px 0px;
+		margin-right:8px;
+		font-size:21px;
+		cursor:default;
+	}
+	.dropdown{
+		background-color:#EF4036;
+		color:#fff;
+		position:absolute;
+		max-height:175px;
+		overflow:auto;
+		box-shadow: 5px 5px 15px #888888;
+		cursor:default;
+		//z-index:3;
+	}
+	.listOption{
+		display:block;
+		margin:5px;
+		cursor:cell;
+	}
+	#toast{
+		top: 0px;
+		left: 0px;
+		position: absolute;
+		background-color:#EF4036;
+		color:#fff;
+		padding:8px;
+		font-size: 18px;
+		max-width:400px;
+		//z-index:4;
+	}
+	.axis text {
+		font-size: 10px;
+		pointer-events:none;
+	}
+	.axis path,
+	.axis line {
+		//fill: none;
+		stroke: #000;
+		shape-rendering: crispEdges;
+	}
+	.x.axis path {
+		//stroke-width: 0;
+	}
+	.y.axis path {
+		stroke-width:0;
+	}
+	.graphDescription{
+		font-size:14px;
+		color:#666;
+		position: absolute;
+		padding:16px 0 0 16px;
+		margin-bottom:16px;
+		bottom:50%;
+		left:0px;
+		//z-index:-1;
+	}
+	#about{
+		position:absolute;
+	}
+
+	.aboutIcon{
+		cursor:pointer;
+		margin:24px 16px 16px 16px;
+		padding:5px 12px 5px 12px;
+		color:#fff;
+		background-color:#404040;
+		top:0px;
+		right:0px;
+		box-shadow: 2px 2px 15px #888888;
+		font-size:24px;
+
+	}
+	.aboutPage{
+		cursor:default;
+		margin:100px;
+		padding:12px;
+		color:#fff;
+		background-color:#404040;
+		top:0px;
+		right:0px;
+		left:0px;
+		bottom:0px;
+		box-shadow: 2px 2px 15px #888888;
+		overflow:auto;
+		font-size:14px;
+	}
+	.link{
+		color:#EF4036;
+		cursor:pointer;
+	}
+
+</style>
+<script src="ba-debug.js" type="text/javascript"></script>
+<script src="jquery-2.0.3.min.js" type="text/javascript"></script>
+<script src="jquery-ui.js" type="text/javascript"></script>
+<script src="d3.v3.min.js" type="text/javascript"></script>
+<script src="verbalucce.js" type="text/javascript"></script> <!--import the verbalucce js file for all analytics and db calls-->
+<script src="module.js" type="text/javascript"></script>
+<script src="interface3.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<script src="viz2.js" type="text/javascript"></script>
+
+<div class="graphDescription">The graph below is showing <span id="themToMe" style="color:#fff;padding:2px 5px;">emails sent to you</span> and <span id="meToThem" style="color:#fff;padding:2px 5px;">emails sent by you</span></div>
+
+<div id="sentence" style="font-size:24px;padding:16px 150px 16px 16px;">
+	I want to see my communication
+	with
+	<div id="people" class="editable module">
+		<span id="peopleDefault"></span>
+	</div>
+	showing
+	<div id="data" class="editable module">
+		<span id="dataDefault"></span>
+	</div>
+	over
+	<div id="time" class="editable module">
+		<span id="timeDefault"></span>
+	</div>
+	displayed
+	<div id="view" class="editable module">
+		<span id="viewDefault"></span>
+	</div>
+    <br>
+    <br>
+    <!--<button id="deleteuserclouddata" type="button" style="font-size:10px;">Delete cloud data</button>-->
+</div>
+
+<div id="toast"></div>
+
+<div id="about" class="aboutIcon"><span>?</span></div>
+
+</body>
+</html>
+

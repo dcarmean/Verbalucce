@@ -1,0 +1,82 @@
+{
+    "name": "Verbalucce",
+	"version": "1.1.0",
+    "manifest_version": 2,
+	"minimum_chrome_version": "29",
+	"oauth2": {
+    "client_id": "551995691137-dvoii2porojkhr8r36ob29ak32voeb14.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/userinfo.email",
+	  "https://mail.google.com",
+	  "https://www.google.com/m8/feeds/contacts/default/full"
+    ]
+  },
+
+
+    "description": "Relationship analytics as you type.",
+    "icons":{
+        "16":"icon.png",
+        "48":"icon.png",
+        "128":"icon.png"},
+	"key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlMDsYFGFdg6FHe8+INPZeZSSz4gb0MdxEpE82su09mVrS9+dgZ+oK+HZjgpzKGqH+AaQZbLaBkJ/n15jNXR/3SmWb3jGwFZEHdKKBw0AOoimSZUiPrmhhyhhdiZzrQpdyG9cq5n3E3x+AzOjtEKBnVbWNZfm/K74ammbnXYQbGTJgDZCZUp1AXfipCqlNu40WwGRiTQu6+Omr5DwPM/cEXxC7lx35KsAfVhZlJUTrrP//XXFSfXLJkCsMxQOOq6G8Y6+Mi3G3W2nQJ55LE+uzdXp3NkhApYd+SBYxAmbgaV1UQanaSooQ0MxU4PizHmReIAupzxNx7cvZtyTYF9weQIDAQAB",
+    "background": {
+	"persistent":true,
+    "scripts": [
+				"ba-debug.js",
+	            "jquery-2.0.3.min.js",
+				"jquery-ui.js",
+	            "localstoragedb.min.js",
+				"verbalucce.js",
+                "background.js"
+                ]
+    },
+    "permissions":[
+		"identity",
+		"management",
+        "tabs",
+        "input",
+        "*://*.google.com/",
+		"https://verbalucce.appspot.com/*",
+		"http://www.google.com/m8/feeds/contacts/default/full",
+        "http://www.google.com/m8/feeds/*",
+        "https://verbalucce.appspot.com/runverbalucce3",
+        "http://adamlaskowitz.com/verbalucce/*"
+		],
+    "content_scripts":[
+        {
+            "matches":["*://mail.google.com/*"],
+            "js":["ba-debug.js"
+                  ,"processing.js"
+                  ,"jquery-2.0.3.min.js"
+                  ,"sentilsm3.js"
+                  ,"main.js"
+                  ,"rangy-core.js"
+                  ,"rangy-selectionsaverestore.js"
+                  ,"jquery-ui.js"
+                  ,"ui.dropdownchecklist.js"
+                  ,"d3.v3.min.js"
+                  ],
+            "css":["ui.dropdownchecklist.themeroller.css"
+                  //,"jquery-ui-1.8.13.custom.css"
+                  ] ,
+            "run_at":	"document_end"
+        }
+    ],
+    "web_accessible_resources": [
+  		"Verbalucce_Prototype_1.pde",
+  		"oauth2/oauth2.html",
+      "jquery-2.0.3.min.map",
+      "realtime_screenshot.jpg",
+      "1-HomeScreen.png",
+      "2-SelectNames.png",
+      "3-Results.png",
+      "4-NewAnalysis.png",
+      "5-PointAbout.png"
+		],
+    "browser_action": {
+        "default_title": "Verbalucce",
+        "default_icon": "icon.png"
+    },
+    
+    "content_security_policy":"script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
